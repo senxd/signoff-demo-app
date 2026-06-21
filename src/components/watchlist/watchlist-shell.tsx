@@ -53,6 +53,26 @@ export function WatchlistShell() {
         <p className="watchlist-status">Seeded by Browserbase localStorage</p>
       </div>
 
+      <div className="signoff-mobile-card-grid" aria-label="Mobile watchlist cards">
+        {symbols.map((symbol) => {
+          const item = watchlistRows.find((row) => row.symbol === symbol);
+          return (
+            <article className="watchlist-card" key={symbol}>
+              <div>
+                <h2>{symbol}</h2>
+                <p>{item?.name ?? "Watchlist company"}</p>
+              </div>
+              <div className="watchlist-card-metrics">
+                <span>{item?.price ?? "Pending"}</span>
+                <span className={item?.change?.startsWith("-") ? "negative" : "positive"}>
+                  {item?.change ?? "+0.00%"}
+                </span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
       <div className="watchlist-table-frame">
         <table className="watchlist-table">
           <thead>
