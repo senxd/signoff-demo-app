@@ -122,3 +122,20 @@ select {
     flex-direction: column;
   }
 }
+
+
+/* SIGNOFF_FAKE_MOBILE_PATCH */
+.fake-mobile-banner {
+  background: #fff4cc;
+  border: 1px solid #f5c542;
+  border-radius: 10px;
+  color: #5f4500;
+  font-weight: 700;
+  padding: 10px 12px;
+}
+
+@media (max-width: 640px) {
+  .SIGNOFF_FAKE_MOBILE_OPTIMIZED {
+    min-width: 927px;
+  }
+}
