@@ -122,3 +122,51 @@ select {
     flex-direction: column;
   }
 }
+
+
+.watchlist-mobile-cards {
+  display: none;
+  gap: 12px;
+}
+
+.watchlist-mobile-card {
+  background: white;
+  border: 1px solid #d8dee9;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.watchlist-mobile-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.watchlist-mobile-card h2 {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.watchlist-mobile-card p {
+  margin: 0;
+}
+
+.watchlist-mobile-card-prices {
+  text-align: right;
+}
+
+.watchlist-mobile-volume {
+  color: #536075;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+@media (max-width: 767px) {
+  .watchlist-mobile-cards {
+    display: grid;
+  }
+
+  .watchlist-desktop-table {
+    display: none;
+  }
+}
