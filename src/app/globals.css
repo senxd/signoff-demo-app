@@ -122,3 +122,53 @@ select {
     flex-direction: column;
   }
 }
+
+
+/* SIGNOFF_MOBILE_WATCHLIST_PATCH */
+.signoff-mobile-card-grid {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .watchlist-status {
+    white-space: normal;
+  }
+
+  .signoff-mobile-card-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .watchlist-card {
+    align-items: flex-start;
+    background: white;
+    border: 1px solid #d8dee9;
+    border-radius: 12px;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    padding: 16px;
+  }
+
+  .watchlist-card h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .watchlist-card p {
+    color: #5f6b7a;
+    font-size: 13px;
+    margin: 4px 0 0;
+  }
+
+  .watchlist-card-metrics {
+    display: grid;
+    gap: 4px;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .watchlist-table-frame {
+    display: none;
+  }
+}
