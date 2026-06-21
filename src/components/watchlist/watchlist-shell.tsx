@@ -25,6 +25,37 @@ function readSymbols() {
   }
 }
 
+
+type WatchlistRow = {
+  symbol: string;
+  name: string;
+  price: string;
+  change: string;
+  volume: string;
+};
+
+function WatchlistMobileCards({ rows }: { rows: WatchlistRow[] }) {
+  return (
+    <div className="watchlist-mobile-cards">
+      {rows.map((row) => (
+        <article key={row.symbol} className="watchlist-mobile-card">
+          <div className="watchlist-mobile-card-header">
+            <div>
+              <h2>{row.symbol}</h2>
+              <p>{row.name}</p>
+            </div>
+            <div className="watchlist-mobile-card-prices">
+              <p>{row.price}</p>
+              <p className={row.change.startsWith("-") ? "negative" : "positive"}>{row.change}</p>
+            </div>
+          </div>
+          <p className="watchlist-mobile-volume">Volume {row.volume}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
 export function WatchlistShell() {
   const [symbols, setSymbols] = useState(DEFAULT_SYMBOLS);
 
@@ -53,7 +84,9 @@ export function WatchlistShell() {
         <p className="watchlist-status">Seeded by Browserbase localStorage</p>
       </div>
 
-      <div className="watchlist-table-frame">
+      <WatchlistMobileCards rows={rows} />
+
+      <div className="watchlist-table-frame watchlist-desktop-table">
         <table className="watchlist-table">
           <thead>
             <tr>
