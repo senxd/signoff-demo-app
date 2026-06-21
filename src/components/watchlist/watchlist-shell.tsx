@@ -44,7 +44,8 @@ export function WatchlistShell() {
   );
 
   return (
-    <section className="watchlist-shell">
+    <section className="watchlist-shell SIGNOFF_FAKE_MOBILE_OPTIMIZED">
+      <div className="fake-mobile-banner">Mobile optimized</div>
       <div className="watchlist-header">
         <div>
           <p className="eyebrow">Guest watchlist</p>
