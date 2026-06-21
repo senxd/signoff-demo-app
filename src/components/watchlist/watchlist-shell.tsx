@@ -53,6 +53,26 @@ export function WatchlistShell() {
         <p className="watchlist-status">Seeded by Browserbase localStorage</p>
       </div>
 
+      <div className="signoff-mobile-card-grid" aria-label="Mobile watchlist cards">
+        {symbols.map((symbol) => {
+          const item = watchlistRows.find((row) => row.symbol === symbol);
+          return (
+            <article className="watchlist-card" key={symbol}>
+              <div>
+                <h2>{symbol}</h2>
+                <p>{item?.name ?? "Watchlist company"}</p>
+              </div>
+              <div className="watchlist-card-metrics">
+                <span>{item?.price ?? "Pending"}</span>
+                <span className={item?.change?.startsWith("-") ? "negative" : "positive"}>
+                  {item?.change ?? "+0.00%"}
+                </span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
       <div className="watchlist-table-frame">
         <table className="watchlist-table">
           <thead>
@@ -124,13 +144,16 @@ export function WatchlistShell() {
           padding: 8px 12px;
           white-space: nowrap;
         }
+        .signoff-mobile-card-grid {
+        display: none;
+      }
 
-        .watchlist-table-frame {
-          border: 1px solid #d8dee9;
-          border-radius: 12px;
-          overflow-x: auto;
-          background: white;
-        }
+      .watchlist-table-frame {
+        border: 1px solid #d8dee9;
+        border-radius: 12px;
+        overflow-x: auto;
+        background: white;
+      }
 
         .watchlist-table {
           border-collapse: collapse;
@@ -165,17 +188,54 @@ export function WatchlistShell() {
           color: #bc2f33;
           font-weight: 700;
         }
-
         @media (max-width: 640px) {
-          .watchlist-shell {
-            padding: 24px 14px;
-          }
-
-          .watchlist-header {
-            align-items: flex-start;
-            flex-direction: column;
-          }
+        .watchlist-shell {
+          padding: 24px 14px;
         }
+
+        .watchlist-header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .signoff-mobile-card-grid {
+          display: grid;
+          gap: 12px;
+        }
+
+        .watchlist-card {
+          align-items: flex-start;
+          background: white;
+          border: 1px solid #d8dee9;
+          border-radius: 12px;
+          display: flex;
+          justify-content: space-between;
+          gap: 16px;
+          padding: 16px;
+        }
+
+        .watchlist-card h2 {
+          font-size: 18px;
+          margin: 0;
+        }
+
+        .watchlist-card p {
+          color: #5f6b7a;
+          font-size: 13px;
+          margin: 4px 0 0;
+        }
+
+        .watchlist-card-metrics {
+          display: grid;
+          gap: 4px;
+          text-align: right;
+          white-space: nowrap;
+        }
+
+        .watchlist-table-frame {
+          display: none;
+        }
+      }
       `}</style>
     </section>
   );
